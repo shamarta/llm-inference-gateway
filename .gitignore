@@ -1,0 +1,17 @@
+cat > .gitignore << 'EOF'
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.env
+EOF
+
+pip install -e ".[dev]"
+python -c "from gateway.config import get_settings; print(get_settings())"
+
+git add .
+git commit -m "chore: scaffold project structure, pyproject and settings"
